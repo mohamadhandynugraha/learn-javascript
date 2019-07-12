@@ -4,3 +4,24 @@ Math.floor(Math.Random() * max) + min
 
 kita juga bisa ganti style lewat javascript menggunakan property style
 https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style
+
+video 49
+event handling
+sebuah pesan untuk memberitahu kode program bahwa ada sesuatu yang terjadi pada webpage
+
+misalkan user click tombol
+user copy paste, scroll ke bawah dll
+
+kalau event listener itu sebuah function yang melakukan aksi pada sebuah kejadian tertentu, menunggu
+kejadian spesifik event tertentu
+
+
+
+parameter kedua setelah click, itu merupakan callback function. Dimana function tersebut dijalankan
+ketika sebuah event terjadi. Artinya function itu dijalankan oleh method bernama addEventListener
+
+dan konsep ini juga menggunakan anonymous function, gak perlu nama dan hanya dijalankan oleh
+eventListener ini aja. syntaxnya menggunakan es5+
+document.querySelector('.btn-roll').addEventListener('click', e => {
+    
+})

@@ -10,13 +10,30 @@ GAME RULES:
 */
 
 // inisialisasi variable
-let globalScores = [], roundScore = 0, currentActivePlayer = 0, dice = 0
+let globalScores = [], roundScore = 0, currentActivePlayer = 0
 
-// generate random number dari 1 sampai 6
-dice = Math.floor(Math.random() * 6) + 1
-document.querySelector(`#current-${currentActivePlayer}`).textContent = dice
 
-var x = document.querySelector('#score-1').textContent
-console.log(x)
 
 document.querySelector('.dice').style.display = 'none'
+
+// inisialisasi nilai 0 pada global score dan round score 
+document.getElementById('score-0').textContent = '0'
+document.getElementById('score-1').textContent = '0'
+document.getElementById('current-0').textContent = '0'
+document.getElementById('current-1').textContent = '0'
+
+
+document.querySelector('.btn-roll').addEventListener('click', e => {
+
+    // inisialisasi dice DOM
+    let diceDOM = document.querySelector('.dice');
+
+    // 1. generate random number
+    let dice = Math.floor(Math.random() * 6) + 1
+
+    // 2. Display the result, sesuaikan angka dengan gambar dadu
+    diceDOM.style.display = 'block'
+    diceDOM.src = `dice-${dice}.png`
+
+    // 3. update the round score IF the dice was not 1
+})
