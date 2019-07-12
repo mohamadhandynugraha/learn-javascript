@@ -1,0 +1,6 @@
+video 48
+generate random number 
+Math.floor(Math.Random() * max) + min
+
+kita juga bisa ganti style lewat javascript menggunakan property style
+https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style

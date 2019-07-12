@@ -9,3 +9,14 @@ GAME RULES:
 
 */
 
+// inisialisasi variable
+let globalScores = [], roundScore = 0, currentActivePlayer = 0, dice = 0
+
+// generate random number dari 1 sampai 6
+dice = Math.floor(Math.random() * 6) + 1
+document.querySelector(`#current-${currentActivePlayer}`).textContent = dice
+
+var x = document.querySelector('#score-1').textContent
+console.log(x)
+
+document.querySelector('.dice').style.display = 'none'
