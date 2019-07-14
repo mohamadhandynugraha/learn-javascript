@@ -10,18 +10,8 @@ GAME RULES:
 */
 
 // inisialisasi variable
-let globalScores = [0, 0], roundScore = 0, currentActivePlayer = 0
-
-
-
-document.querySelector('.dice').style.display = 'none'
-
-// inisialisasi nilai 0 pada global score dan round score 
-document.getElementById('score-0').textContent = '0'
-document.getElementById('score-1').textContent = '0'
-document.getElementById('current-0').textContent = '0'
-document.getElementById('current-1').textContent = '0'
-
+let globalScores, roundScore, currentActivePlayer
+init()
 
 document.querySelector('.btn-roll').addEventListener('click', e => {
 
@@ -56,7 +46,7 @@ document.querySelector('.btn-hold').addEventListener('click', e => {
 
     // check if player won the game
     if (globalScores[currentActivePlayer] >= 20) {
-        document.querySelector(`#name-${currentActivePlayer}`).textContent += ' is WINNER'
+        document.querySelector(`#name-${currentActivePlayer}`).textContent = 'WINNER'
         // hide the dice
         document.querySelector('.dice').style.display = 'none'
         // tambahkan class winner
@@ -67,6 +57,10 @@ document.querySelector('.btn-hold').addEventListener('click', e => {
         changePlayer()
     }
 })
+
+// tambahkan fungsi new game
+// panggil fungsi init
+document.querySelector('.btn-new').addEventListener('click', init)
 
 function changePlayer() {
     // change player
@@ -81,4 +75,22 @@ function changePlayer() {
 
     // hide the dice when dice === 1
     document.querySelector('.dice').style.display = 'none'
+}
+
+function init() {
+    globalScores = [0, 0], roundScore = 0, currentActivePlayer = 0
+    document.querySelector('.dice').style.display = 'none'
+
+    // inisialisasi nilai 0 pada global score dan round score 
+    document.getElementById('score-0').textContent = '0'
+    document.getElementById('score-1').textContent = '0'
+    document.getElementById('current-0').textContent = '0'
+    document.getElementById('current-1').textContent = '0'
+    document.getElementById('name-0').textContent = 'Player 1'
+    document.getElementById('name-1').textContent = 'Player 2'
+    document.querySelector(`.player-0-panel`).classList.remove('winner')
+    document.querySelector(`.player-1-panel`).classList.remove('winner')
+    document.querySelector(`.player-0-panel`).classList.remove('active')
+    document.querySelector(`.player-1-panel`).classList.remove('active')
+    document.querySelector(`.player-0-panel`).classList.add('active')
 }
