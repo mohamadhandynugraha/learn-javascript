@@ -46,3 +46,7 @@ video 52
 menambahkan fungsi btn new game
 dengan tambahan fungsi init
 lihat di file javascript
+
+
+vide0 53 menambahkan game state
+game state true or false supaya ketika menang btn roll dan btn hold tidak dapat di click

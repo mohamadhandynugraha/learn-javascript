@@ -10,51 +10,56 @@ GAME RULES:
 */
 
 // inisialisasi variable
-let globalScores, roundScore, currentActivePlayer
+let globalScores, roundScore, currentActivePlayer, statusGamePlay
 init()
 
 document.querySelector('.btn-roll').addEventListener('click', e => {
 
-    // inisialisasi dice DOM
-    let diceDOM = document.querySelector('.dice');
+    if (statusGamePlay) {
+        // inisialisasi dice DOM
+        let diceDOM = document.querySelector('.dice');
 
-    // 1. generate random number
-    let dice = Math.floor(Math.random() * 6) + 1
+        // 1. generate random number
+        let dice = Math.floor(Math.random() * 6) + 1
 
-    // 2. Display the result, sesuaikan angka dengan gambar dadu
-    diceDOM.style.display = 'block'
-    diceDOM.src = `dice-${dice}.png`
+        // 2. Display the result, sesuaikan angka dengan gambar dadu
+        diceDOM.style.display = 'block'
+        diceDOM.src = `dice-${dice}.png`
 
-    // 3. update the round score IF the dice was not 1
-    if (dice !== 1) {
-        // add to round score
-        roundScore += dice
-        document.querySelector(`#current-${currentActivePlayer}`).textContent = roundScore
-    } else {
-        changePlayer()
+        // 3. update the round score IF the dice was not 1
+        if (dice !== 1) {
+            // add to round score
+            roundScore += dice
+            document.querySelector(`#current-${currentActivePlayer}`).textContent = roundScore
+        } else {
+            changePlayer()
+        }
     }
 })
 
 // tambahin fungsi btn hold
 // btn hold fungsinya: tambahkan roundScore ke globalScore
 document.querySelector('.btn-hold').addEventListener('click', e => {
-    // add current score to global score
-    globalScores[currentActivePlayer] += roundScore
+    if (statusGamePlay) {
+        // add current score to global score
+        globalScores[currentActivePlayer] += roundScore
 
-    // update the UI
-    document.querySelector(`#score-${currentActivePlayer}`).textContent = globalScores[currentActivePlayer]
+        // update the UI
+        document.querySelector(`#score-${currentActivePlayer}`).textContent = globalScores[currentActivePlayer]
 
-    // check if player won the game
-    if (globalScores[currentActivePlayer] >= 20) {
-        document.querySelector(`#name-${currentActivePlayer}`).textContent = 'WINNER'
-        // hide the dice
-        document.querySelector('.dice').style.display = 'none'
-        // tambahkan class winner
-        document.querySelector(`.player-${currentActivePlayer}-panel`).classList.add('winner')
-        document.querySelector(`.player-${currentActivePlayer}-panel`).classList.remove('active')
-    } else {
-        // change player
-        changePlayer()
+        // check if player won the game
+        if (globalScores[currentActivePlayer] >= 20) {
+            document.querySelector(`#name-${currentActivePlayer}`).textContent = 'WINNER'
+            // hide the dice
+            document.querySelector('.dice').style.display = 'none'
+            // tambahkan class winner
+            document.querySelector(`.player-${currentActivePlayer}-panel`).classList.add('winner')
+            document.querySelector(`.player-${currentActivePlayer}-panel`).classList.remove('active')
+            statusGamePlay = false
+        } else {
+            // change player
+            changePlayer()
+        }
     }
 })
 
@@ -78,7 +83,7 @@ function changePlayer() {
 }
 
 function init() {
-    globalScores = [0, 0], roundScore = 0, currentActivePlayer = 0
+    globalScores = [0, 0], roundScore = 0, currentActivePlayer = 0, statusGamePlay = true
     document.querySelector('.dice').style.display = 'none'
 
     // inisialisasi nilai 0 pada global score dan round score 
