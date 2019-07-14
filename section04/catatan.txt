@@ -57,3 +57,5 @@ kasus 1: kalau misalkan player 1 dapat angka dadu 6 kemudian player 1 hold,
 player 2 jalan dan dapat dadu angka 6. harusnya tetap jalan. versi di video error, karena terhitung
 6 2 kali padahal beda player. solusi di linknya di appv2.js
 
+video 56 mau update input final score, jadi sebelum main tentukan dulu nilai final scorenya berapa.
+aturan nomor 2 jonas mau gua ubah

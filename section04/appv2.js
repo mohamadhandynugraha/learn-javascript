@@ -9,10 +9,19 @@ change the predefined score of 100. (Hint: you can read that value with the .val
 3. Add another dice to the game, so that there are two dices now. The player looses 
 his current score when one of them is a 1. (Hint: you will need CSS to position the second dice, 
     so take a look at the CSS code for the first one.)
+
+
+aturan nomor 2 gua ubah
+video 56 mau update input final score, jadi sebelum main tentukan dulu nilai final scorenya berapa.
+aturan nomor 2 jonas mau gua ubah.
+
+cara mainnya. tentukan dulu skornya berapa menggunakan input prompt, kemudian baru main
 */
 
+
+
 // inisialisasi variable
-let globalScores, roundScore, currentActivePlayer, statusGamePlay, previousDice = 0
+let globalScores, roundScore, currentActivePlayer, statusGamePlay, previousDice = 0, finalScore = 0
 init()
 
 document.querySelector('.btn-roll').addEventListener('click', e => {
@@ -25,7 +34,7 @@ document.querySelector('.btn-roll').addEventListener('click', e => {
         let diceDOM = document.querySelector('.dice');
 
         // 1. generate random number
-        
+
         let dice = Math.floor(Math.random() * 6) + 1
 
         // 2. Display the result, sesuaikan angka dengan gambar dadu
@@ -67,7 +76,7 @@ document.querySelector('.btn-hold').addEventListener('click', e => {
         document.querySelector(`#score-${currentActivePlayer}`).textContent = globalScores[currentActivePlayer]
 
         // check if player won the game
-        if (globalScores[currentActivePlayer] >= 100) {
+        if (globalScores[currentActivePlayer] >= finalScore) {
             document.querySelector(`#name-${currentActivePlayer}`).textContent = 'WINNER'
             // hide the dice
             document.querySelector('.dice').style.display = 'none'
@@ -102,6 +111,13 @@ function changePlayer() {
 }
 
 function init() {
+    // input pertama kali sebelum main game
+    finalScore = parseInt(prompt("Berapa nilai final score yang kamu inginkan? pastikan hanya memasukan angka, bukan text"))
+    while (finalScore === 0 || isNaN(finalScore)) {
+        finalScore = parseInt(prompt("Berapa nilai final score yang kamu inginkan? pastikan hanya memasukan angka, bukan text"))
+    }
+
+
     globalScores = [0, 0], roundScore = 0, currentActivePlayer = 0, statusGamePlay = true
     document.querySelector('.dice').style.display = 'none'
 
