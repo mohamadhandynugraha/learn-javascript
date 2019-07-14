@@ -35,3 +35,8 @@ artinya kita bisa tambahkan class active ke div dengan class player-1-panel. Set
 menggunakan class active pada class player-0-panel.
 
 konsep tersebut bisa menggunakan classList toggle lihat di file javascriptnya
+
+video 51
+menambahkan fungsi btn hold, roundScore ke globalscore
+didalam fungsi tersebut terdapat pengecekan jika score sudah mencapai >= 100?
+maka tambahkan class winner

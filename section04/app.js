@@ -10,7 +10,7 @@ GAME RULES:
 */
 
 // inisialisasi variable
-let globalScores = [], roundScore = 0, currentActivePlayer = 0
+let globalScores = [0, 0], roundScore = 0, currentActivePlayer = 0
 
 
 
@@ -36,22 +36,49 @@ document.querySelector('.btn-roll').addEventListener('click', e => {
     diceDOM.src = `dice-${dice}.png`
 
     // 3. update the round score IF the dice was not 1
-    if(dice !== 1){
+    if (dice !== 1) {
         // add to round score
         roundScore += dice
         document.querySelector(`#current-${currentActivePlayer}`).textContent = roundScore
     } else {
-        // change player
-        // ternary operator
-        currentActivePlayer === 0 ? currentActivePlayer = 1 : currentActivePlayer = 0
-        roundScore = 0
-        document.getElementById('current-0').textContent = 0
-        document.getElementById('current-1').textContent = 0
-
-        document.querySelector('.player-0-panel').classList.toggle('active')
-        document.querySelector('.player-1-panel').classList.toggle('active')
-
-        // hide the dice when dice === 1
-        document.querySelector('.dice').style.display = 'none'
+        changePlayer()
     }
 })
+
+// tambahin fungsi btn hold
+// btn hold fungsinya: tambahkan roundScore ke globalScore
+document.querySelector('.btn-hold').addEventListener('click', e => {
+    // add current score to global score
+    globalScores[currentActivePlayer] += roundScore
+
+    // update the UI
+    document.querySelector(`#score-${currentActivePlayer}`).textContent = globalScores[currentActivePlayer]
+
+    // check if player won the game
+    if (globalScores[currentActivePlayer] >= 20) {
+        document.querySelector(`#name-${currentActivePlayer}`).textContent += ' is WINNER'
+        // hide the dice
+        document.querySelector('.dice').style.display = 'none'
+        // tambahkan class winner
+        document.querySelector(`.player-${currentActivePlayer}-panel`).classList.add('winner')
+        document.querySelector(`.player-${currentActivePlayer}-panel`).classList.remove('active')
+    } else {
+        // change player
+        changePlayer()
+    }
+})
+
+function changePlayer() {
+    // change player
+    // ternary operator
+    currentActivePlayer === 0 ? currentActivePlayer = 1 : currentActivePlayer = 0
+    roundScore = 0
+    document.getElementById('current-0').textContent = 0
+    document.getElementById('current-1').textContent = 0
+
+    document.querySelector('.player-0-panel').classList.toggle('active')
+    document.querySelector('.player-1-panel').classList.toggle('active')
+
+    // hide the dice when dice === 1
+    document.querySelector('.dice').style.display = 'none'
+}
