@@ -50,3 +50,10 @@ lihat di file javascript
 
 vide0 53 menambahkan game state
 game state true or false supaya ketika menang btn roll dan btn hold tidak dapat di click
+
+
+video 55 coba pelajari logika dari variable previous dice
+kasus 1: kalau misalkan player 1 dapat angka dadu 6 kemudian player 1 hold, 
+player 2 jalan dan dapat dadu angka 6. harusnya tetap jalan. versi di video error, karena terhitung
+6 2 kali padahal beda player. solusi di linknya di appv2.js
+
