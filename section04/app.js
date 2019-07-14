@@ -36,4 +36,22 @@ document.querySelector('.btn-roll').addEventListener('click', e => {
     diceDOM.src = `dice-${dice}.png`
 
     // 3. update the round score IF the dice was not 1
+    if(dice !== 1){
+        // add to round score
+        roundScore += dice
+        document.querySelector(`#current-${currentActivePlayer}`).textContent = roundScore
+    } else {
+        // change player
+        // ternary operator
+        currentActivePlayer === 0 ? currentActivePlayer = 1 : currentActivePlayer = 0
+        roundScore = 0
+        document.getElementById('current-0').textContent = 0
+        document.getElementById('current-1').textContent = 0
+
+        document.querySelector('.player-0-panel').classList.toggle('active')
+        document.querySelector('.player-1-panel').classList.toggle('active')
+
+        // hide the dice when dice === 1
+        document.querySelector('.dice').style.display = 'none'
+    }
 })

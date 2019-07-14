@@ -25,3 +25,13 @@ eventListener ini aja. syntaxnya menggunakan es5+
 document.querySelector('.btn-roll').addEventListener('click', e => {
     
 })
+
+
+video 50
+
+kita belajar cara menambahkan dan atau menghapus sebuah ke class ke element lain.
+liat starter code di html, ada class active disana di tulis di sebuah div dengan class player-0-panel
+artinya kita bisa tambahkan class active ke div dengan class player-1-panel. Setelah itu dihapus
+menggunakan class active pada class player-0-panel.
+
+konsep tersebut bisa menggunakan classList toggle lihat di file javascriptnya
