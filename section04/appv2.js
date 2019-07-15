@@ -18,8 +18,6 @@ aturan nomor 2 jonas mau gua ubah.
 cara mainnya. tentukan dulu skornya berapa menggunakan input prompt, kemudian baru main
 */
 
-
-
 // inisialisasi variable
 let globalScores, roundScore, currentActivePlayer, statusGamePlay, previousDice = 0, finalScore = 0
 init()
